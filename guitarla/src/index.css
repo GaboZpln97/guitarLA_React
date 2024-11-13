@@ -754,9 +754,11 @@ button:not(:disabled),
   }
 }
 .header {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/img/header.jpg");
-  background-position: 50%;
-  background-size: cover;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/portada.png");
+  background-position: 50% 50%;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   position: relative;
 }
 .header .header-guitarra {
@@ -774,4 +776,56 @@ button:not(:disabled),
     animation-name: animarImagen;
     z-index: 10;
   }
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+}
+
+.text-6xl {
+  font-size: 4rem;
+}
+
+.text-inteline-none {
+  line-height: 1;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.hover\:bg-gray-100:hover {
+  color: rgb(185, 173, 173)
+}
+
+.hover\:bg-gray-200:hover {
+  color: #e5e7eb;
+}
+
+.transition{
+  transition: all 0.3s;
+}
+
+.text-purple{
+  color: #6f42c1;
 }

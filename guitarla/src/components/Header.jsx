@@ -6,8 +6,9 @@ function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, setC
         <div className="container-xl">
             <div className="row justify-content-center justify-content-md-between">
                 <div className="col-8 col-md-3">
-                    <a href="index.html">
-                        <img className="img-fluid" src="./img/logo.svg" alt="imagen logo" />
+                    <a href="index.html" className="text-inteline-none text-xl text-center justify-content-center row hover:bg-gray-200 transition">
+                        <span className="font-bold text-sm text-inteline-none">TUS VIDEOJUEGOS</span>
+                        <span className="text-inteline-none text-5xl font-bold text-purple">.com</span>
                     </a>
                 </div>
                 <nav className="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
