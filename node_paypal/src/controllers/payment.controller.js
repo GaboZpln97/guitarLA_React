@@ -1,4 +1,4 @@
-import { PAYPAL_API, CLIENT_PAYPAL, SECRET_PAYPAL } from "../config.js";
+import { PAYPAL_API, CLIENT_PAYPAL, SECRET_PAYPAL, HOST } from "../config.js";
 import axios from "axios";
 
 const createOrder = async (req, res) => {
@@ -19,11 +19,11 @@ const createOrder = async (req, res) => {
             brand_name: 'Tus Videojuegos.com',
             landing_page: 'NO_PREFERENCE',
             user_action: 'PAY_NOW',
-            return_url: 'http://localhost:5173/',
-            cancel_url: 'http://localhost:5173/'
+            return_url: `${HOST}/capture-payment`,
+            cancel_url: `${HOST}/cancel-payment`
         }
     };
-    
+
     const params = new URLSearchParams();
     params.append('grant_type', 'client_credentials');
 
@@ -46,16 +46,27 @@ const createOrder = async (req, res) => {
     
 
 
-    res.send({response: 'Order Created'});
-    res.status(200);
+    return res.json(result.data);
 };
 
-const capturePayment = (req, res) => {
-    res.send('Payment Captured');
+const capturePayment = async (req, res) => {
+
+    const { token } = req.query;
+
+    const response = await axios.post(`${PAYPAL_API}/v2/checkout/orders/${token}/capture`, {}, {
+        auth: {
+            username: CLIENT_PAYPAL,
+            password: SECRET_PAYPAL
+        }
+    })
+
+    console.log(response.data);
+
+    return res.redirect('http://localhost:5173');
 };
 
 const cancelPayment = (req, res) => {
-    res.send('Payment Cancelled');
+    return res.redirect('http://localhost:5173');
 };
 
 export {

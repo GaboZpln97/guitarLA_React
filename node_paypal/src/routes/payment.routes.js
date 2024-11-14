@@ -12,8 +12,12 @@ router.post('/create-order', function(req, res){
     createOrder(req, res);
 });
 
-router.get('/capture-payment', capturePayment);
+router.get('/capture-payment', function(req, res){
+    capturePayment(req, res);
+});
 
-router.get('/cancel-payment', cancelPayment);
+router.get('/cancel-payment', function(req, res){
+    cancelPayment(req, res);
+});
 
 export default router;

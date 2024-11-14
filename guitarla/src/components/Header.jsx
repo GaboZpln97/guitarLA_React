@@ -1,7 +1,7 @@
 function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, setCart, isEpmty, cartTotal}) {
 
     const payOrder = async () => {
-        const url = 'http://192.168.100.26:3000/create-order';
+        const url = 'http://10.1.1.43:3000/create-order';
         
         const order = cart.map(guitar => {
             return {
@@ -25,7 +25,7 @@ function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, setC
         try{
             const response = await fetch(url, parmeters)
             const data = await response.json()
-            console.log(data)
+            window.location.href = data.links[1].href
         }catch(error){
             console.error(error)
         }
