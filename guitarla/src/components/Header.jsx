@@ -1,5 +1,35 @@
 function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, setCart, isEpmty, cartTotal}) {
 
+    const payOrder = async () => {
+        const url = 'http://192.168.100.26:3000/create-order';
+        
+        const order = cart.map(guitar => {
+            return {
+                price: guitar.price,
+                name: guitar.name
+            }
+        });
+
+        const body = {
+            orderBody: order
+        }
+
+        const parmeters = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }
+
+        try{
+            const response = await fetch(url, parmeters)
+            const data = await response.json()
+            console.log(data)
+        }catch(error){
+            console.error(error)
+        }
+    };
 
   return (
     <header className="py-5 header">
@@ -72,7 +102,10 @@ function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, setC
                                             ))}
                                         </tbody>
                                     </table>
-                                    <p className="text-end">Total pagar: <span className="fw-bold">${cartTotal}</span></p>
+                                    <div style={{width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                                        <button onClick={payOrder} style={{padding: '1', textAlign: 'center', color: 'white', borderRadius: '0.25rem', outline: 'none', border: 'solid 2px #0295CC', background: '#24C1FD', fontWeight: 'bold', cursor: 'pointer'}}>Pagar</button>
+                                        <p className="text-end">Total pagar: <span className="fw-bold">${cartTotal}</span></p>
+                                    </div>
                                 </>
                             )}
                                           
