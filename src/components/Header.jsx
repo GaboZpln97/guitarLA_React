@@ -1,7 +1,7 @@
 function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, setCart, isEpmty, cartTotal}) {
 
     const payOrder = async () => {
-        const url = 'http://10.1.1.43:3000/create-order';
+        const url = 'https://guitar-back-production.up.railway.app/create-order';
         
         const order = cart.map(guitar => {
             return {
