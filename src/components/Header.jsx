@@ -1,7 +1,7 @@
 function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, setCart, isEpmty, cartTotal}) {
 
     const payOrder = async () => {
-        const url = 'https://guitar-back-production.up.railway.app/create-order';
+        const url = 'http://localhost:3000/create-order';
         
         const order = cart.map(guitar => {
             return {
@@ -43,11 +43,15 @@ function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, setC
                 </div>
                 <nav className="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
                     <div 
-                        className="carrito"
+                        className={`carrito ${cart.length > 0 ? 'has-items' : ''}`}
                     >
                         <img className="img-fluid" src="./img/carrito.png" alt="imagen carrito" />
+                        {cart.length > 0 && (
+                        <span className="notification">{cart.length}</span>
+                        )}
 
                         <div id="carrito" className="bg-white p-3">
+                            <button>Cerrar</button>
                             {isEpmty ? (
                                 <p className="text-center">El carrito esta vacio</p>
                             ): (

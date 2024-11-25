@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react"
 import { db } from "../data/db"
 
+
 export const useCart = () => {
 
     const initialCart = () => {
@@ -76,4 +77,6 @@ export const useCart = () => {
         isEpmty,
         cartTotal,
     }
+
+    
 }

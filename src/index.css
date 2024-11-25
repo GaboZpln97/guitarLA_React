@@ -50,6 +50,29 @@
   padding: 0 2px;
   margin: 0 3px;
 }
+
+.carrito .notification {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: orange;
+  color: white;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: bold;
+  display: none; /* Oculto por defecto */
+}
+
+.carrito.has-items .notification {
+  display: flex; /* Se muestra solo cuando haya productos */
+}
+
+
 .m-0 {
   margin: 0;
 }
